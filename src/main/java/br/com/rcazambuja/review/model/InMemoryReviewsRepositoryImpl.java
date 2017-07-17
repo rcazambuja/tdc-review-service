@@ -9,6 +9,9 @@ import java.util.Map;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class InMemoryReviewsRepositoryImpl implements ReviewsRepository {
     private Map<Long, Review> reviews;
     Random randomGenerator = new Random();
