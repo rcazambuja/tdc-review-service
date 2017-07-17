@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: review-service
+  cloud:
+    stream:
+      bindings:
+        applicationMetrics:
+          destination: metrics
+      metrics:
+        properties: spring.application.name, spring.cloud.client.hostname
+      kafka:
+        binder:
+          autoAddPartitions: true
+          brokers: localhost:9092
+          zkNodes: localhost:2181
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+    serialization-inclusion: NON_NULL
+    deserialization:
+      fail_on_unknown_properties: false
+      read_date_timestamps_as_nanoseconds: false
+
+server:
+  port: 8082
+  
+management:
+  contextPath: /management
+  security:
+    enabled: false
+
+    

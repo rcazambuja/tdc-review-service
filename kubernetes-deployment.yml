@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: review-service
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: review-service
+    spec:
+      containers:
+      - name: review-service
+        image: rcazambuja/review-service:0.0.1
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /management/health
+            port: 8082
+          initialDelaySeconds: 60
+          timeoutSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /management/info
+            port: 8082
+          timeoutSeconds: 30
+        ports:
+        - containerPort: 8082
