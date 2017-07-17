@@ -24,5 +24,8 @@ spec:
             path: /management/info
             port: 8082
           timeoutSeconds: 30
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: cloud
         ports:
         - containerPort: 8082
